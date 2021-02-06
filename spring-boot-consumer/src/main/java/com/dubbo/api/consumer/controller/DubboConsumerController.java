@@ -6,15 +6,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Component
-@RequestMapping("/")
+@RequestMapping("/test")
 public class DubboConsumerController {
 
     @Reference(version = "1.0.0")
     private ISayHello iSayHello;
 
     @RequestMapping("/testDubbo")
-    public void testDubbo(){
-        iSayHello.sayHello("Consumer");
+    public String testDubbo(){
+        String result = iSayHello.sayHello("Consumer");
+        System.out.println(result);
+        return result;
     }
 
 }
